@@ -54,7 +54,7 @@ Yahara.ApplicationRoute = Ember.Route.extend({
 
     signOut: function() {
       this.controller.get('model').signOut();
-      this.transitionTo('application.index');
+      this.transitionTo('/');
     },
 
     goHome: function(){
