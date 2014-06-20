@@ -93,6 +93,18 @@ test("collecting and removing an album", function(){
     })
 });
 
+test("going directly to collection page", function() {
+   visit("/album/meat-the-zombeatles-the-zombeatles")
+    .click("h3:contains('Add to Your Collection')")
+    .fillIn("input#card-number", "1234567")
+    .click("button.login")
+    .click("h3:contains('Add to Your Collection')")
+    .visit("/collection")
+    .andThen(function() {
+      equal(find("li.album").length, 1, "The page shows the album");
+      equal(find("li.album a.album").text().trim(), "Meat the Zombeatles!", "There's an album")
+    });
+});
 
 module("Modal Features", {
   setup: function() {
